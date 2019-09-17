@@ -6,6 +6,11 @@
 - Zeus
 - Lim Nguyen
 
+## To Do
+- [X] Choose a programming language
+- [ ] Build a use case diagram
+- [ ] Create UML diagram
+
 ## Life-Cycle Model
 
 We are using the iteration and incrementation life-cycle model
