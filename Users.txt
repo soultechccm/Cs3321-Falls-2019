@@ -1,0 +1,7 @@
+beachyc01,carlton123,0
+dunam01,marine123,0
+birmink01,kaitlin123,0
+suddethi01,ina123,0
+chouwes01,wes123,0
+platta01,alva123,0
+ethridgem01,admin123,1
