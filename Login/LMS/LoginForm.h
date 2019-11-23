@@ -46,6 +46,7 @@ namespace LMS {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Label^  label3;
 	protected:
 
 	private:
@@ -67,6 +68,7 @@ namespace LMS {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -122,11 +124,23 @@ namespace LMS {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &LoginForm::button2_Click);
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(20, 30);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(252, 20);
+			this->label3->TabIndex = 6;
+			this->label3->Text = L"Learning Management System";
+			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -155,7 +169,7 @@ namespace LMS {
 			MessageBox::Show("Admin access granted");
 		}
 		else
-			MessageBox::Show("Access denied");
+			MessageBox::Show("Incorrect username or password");
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
@@ -172,7 +186,7 @@ namespace LMS {
 			MessageBox::Show("Student access granted");
 		}
 		else
-			MessageBox::Show("Access denied");
+			MessageBox::Show("Incorrect username or password");
 	}
 };
 }
