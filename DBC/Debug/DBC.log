@@ -1,0 +1,3 @@
+﻿  Source.cpp
+C:\Users\Zeus\source\repos\DBC\Source.cpp(22,14): warning C4101: 'retcode': unreferenced local variable
+  DBC.vcxproj -> C:\Users\Zeus\source\repos\DBC\Debug\DBC.exe
