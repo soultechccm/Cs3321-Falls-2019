@@ -1,4 +1,5 @@
 #pragma once
+#include "Students.h"
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -184,6 +185,9 @@ namespace LMS {
 		if (checkLogin == 1)
 		{
 			MessageBox::Show("Student access granted");
+			this->Hide();
+			Students^ studentWindow = gcnew Students;
+			studentWindow->ShowDialog();
 		}
 		else
 			MessageBox::Show("Incorrect username or password");
