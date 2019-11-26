@@ -1,0 +1,5 @@
+﻿  LoginForm.cpp
+c:\users\eric\documents\cs 3321\login\lms\loginform.cpp(70): warning C4715: 'adminlogin': not all control paths return a value
+c:\users\eric\documents\cs 3321\login\lms\loginform.cpp(110): warning C4715: 'studentlogin': not all control paths return a value
+  LoginForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  LMS.vcxproj -> C:\Users\Eric\Documents\CS 3321\Login\Debug\LMS.exe

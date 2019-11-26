@@ -1,0 +1,7 @@
+studentuser1,easypass1,0
+studentuser2,easypass2,0
+studentuser3,easypass3,0
+studentuser4,easypass4,0
+studentuser5,easypass5,0
+studentuser6,easypass6,0
+adminuser,adminpass0,1

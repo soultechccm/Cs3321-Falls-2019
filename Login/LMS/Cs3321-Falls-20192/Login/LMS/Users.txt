@@ -1,0 +1,3 @@
+studentuser1,easypass1
+studentuser2,easypass2
+adminuser,adminpass0
