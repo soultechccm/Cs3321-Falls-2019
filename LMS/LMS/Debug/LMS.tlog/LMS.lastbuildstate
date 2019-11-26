@@ -1,2 +1,2 @@
-#TargetFrameworkVersion=v4.6.1:PlatformToolSet=v141:EnableManagedIncrementalBuild=true:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0.17763.0
-Debug|Win32|C:\Users\Eric\Documents\CS 3321\Login\|
+#TargetFrameworkVersion=v4.6.1:PlatformToolSet=v142:EnableManagedIncrementalBuild=true:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0
+Debug|Win32|C:\Users\Eric\Downloads\Cs3321-Falls-2019-master\Cs3321-Falls-2019-master\LMS\|

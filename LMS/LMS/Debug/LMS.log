@@ -1,5 +1,5 @@
-﻿  LoginForm.cpp
-c:\users\eric\documents\cs 3321\login\lms\loginform.cpp(70): warning C4715: 'adminlogin': not all control paths return a value
-c:\users\eric\documents\cs 3321\login\lms\loginform.cpp(110): warning C4715: 'studentlogin': not all control paths return a value
-  LoginForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  LMS.vcxproj -> C:\Users\Eric\Documents\CS 3321\Login\Debug\LMS.exe
+﻿LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+Students.obj : warning LNK4006: "int __clrcall main(cli::array<class System::String ^ >^)" (?main@@$$HYMHP$01AP$AAVString@System@@@Z) already defined in AdminForm.obj; second definition ignored
+LINK : warning LNK4067: ambiguous entry point; selected 'mainCRTStartup'
+C:\Users\Eric\Downloads\Cs3321-Falls-2019-master\Cs3321-Falls-2019-master\LMS\Debug\LMS.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
+  LMS.vcxproj -> C:\Users\Eric\Downloads\Cs3321-Falls-2019-master\Cs3321-Falls-2019-master\LMS\Debug\LMS.exe
