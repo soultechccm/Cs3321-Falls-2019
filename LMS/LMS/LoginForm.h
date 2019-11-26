@@ -1,4 +1,10 @@
 #pragma once
+#include "Students.h"
+#include "AdminForm.h"
+#include<iostream>
+#include<string>
+#include<fstream>
+#include<msclr/marshal_cppstd.h>
 
 namespace LMS {
 
@@ -8,13 +14,15 @@ namespace LMS {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace std;
 	/// <summary>
 	/// Summary for LoginForm
 	/// </summary>
 	public ref class LoginForm : public System::Windows::Forms::Form
 	{
 	public:
+		
+		int userFile(string studentUser, string studentPass);
 		LoginForm(void)
 		{
 			InitializeComponent();
@@ -35,25 +43,13 @@ namespace LMS {
 			}
 		}
 
-	protected:
+	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  label2;
 
-	private: System::Windows::Forms::TextBox^ inputUsername;
-	private: System::Windows::Forms::TextBox^ inputPassword;
-
-
-	private: System::Windows::Forms::Label^ labelUsername;
-	private: System::Windows::Forms::Label^ labelPassword;
-	private: System::Windows::Forms::Button^ buttonLogin;
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel1;
-	private: System::Windows::Forms::Label^ labelTitle;
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Button^ button1;
 	protected:
 
 	private:
@@ -69,133 +65,115 @@ namespace LMS {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->inputUsername = (gcnew System::Windows::Forms::TextBox());
-			this->inputPassword = (gcnew System::Windows::Forms::TextBox());
-			this->labelUsername = (gcnew System::Windows::Forms::Label());
-			this->labelPassword = (gcnew System::Windows::Forms::Label());
-			this->buttonLogin = (gcnew System::Windows::Forms::Button());
-			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
-			this->labelTitle = (gcnew System::Windows::Forms::Label());
-			this->tableLayoutPanel1->SuspendLayout();
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// inputUsername
+			// textBox1
 			// 
-			this->inputUsername->Anchor = System::Windows::Forms::AnchorStyles::Left;
-			this->tableLayoutPanel1->SetColumnSpan(this->inputUsername, 2);
-			this->inputUsername->Location = System::Drawing::Point(371, 375);
-			this->inputUsername->Margin = System::Windows::Forms::Padding(10);
-			this->inputUsername->Name = L"inputUsername";
-			this->inputUsername->Size = System::Drawing::Size(355, 31);
-			this->inputUsername->TabIndex = 1;
+			this->textBox1->Location = System::Drawing::Point(94, 74);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(100, 20);
+			this->textBox1->TabIndex = 1;
 			// 
-			// inputPassword
+			// textBox2
 			// 
-			this->inputPassword->Anchor = System::Windows::Forms::AnchorStyles::Left;
-			this->tableLayoutPanel1->SetColumnSpan(this->inputPassword, 2);
-			this->inputPassword->Location = System::Drawing::Point(371, 426);
-			this->inputPassword->Margin = System::Windows::Forms::Padding(10);
-			this->inputPassword->Name = L"inputPassword";
-			this->inputPassword->Size = System::Drawing::Size(355, 31);
-			this->inputPassword->TabIndex = 2;
-			this->inputPassword->UseSystemPasswordChar = true;
+			this->textBox2->Location = System::Drawing::Point(94, 127);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->PasswordChar = '*';
+			this->textBox2->Size = System::Drawing::Size(100, 20);
+			this->textBox2->TabIndex = 2;
 			// 
-			// labelUsername
+			// label1
 			// 
-			this->labelUsername->Anchor = System::Windows::Forms::AnchorStyles::Right;
-			this->labelUsername->AutoSize = true;
-			this->labelUsername->Location = System::Drawing::Point(235, 378);
-			this->labelUsername->Margin = System::Windows::Forms::Padding(10);
-			this->labelUsername->Name = L"labelUsername";
-			this->labelUsername->Size = System::Drawing::Size(116, 25);
-			this->labelUsername->TabIndex = 3;
-			this->labelUsername->Text = L"Username:";
-			this->labelUsername->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(31, 80);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(55, 13);
+			this->label1->TabIndex = 3;
+			this->label1->Text = L"Username";
 			// 
-			// labelPassword
+			// label2
 			// 
-			this->labelPassword->Anchor = System::Windows::Forms::AnchorStyles::Right;
-			this->labelPassword->AutoSize = true;
-			this->labelPassword->Location = System::Drawing::Point(239, 429);
-			this->labelPassword->Margin = System::Windows::Forms::Padding(10);
-			this->labelPassword->Name = L"labelPassword";
-			this->labelPassword->Size = System::Drawing::Size(112, 25);
-			this->labelPassword->TabIndex = 4;
-			this->labelPassword->Text = L"Password:";
-			this->labelPassword->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(31, 134);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(53, 13);
+			this->label2->TabIndex = 4;
+			this->label2->Text = L"Password";
 			// 
-			// buttonLogin
+			// label3
 			// 
-			this->buttonLogin->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->buttonLogin->AutoSize = true;
-			this->buttonLogin->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->buttonLogin->Location = System::Drawing::Point(494, 477);
-			this->buttonLogin->Margin = System::Windows::Forms::Padding(10);
-			this->buttonLogin->Name = L"buttonLogin";
-			this->buttonLogin->Padding = System::Windows::Forms::Padding(10);
-			this->buttonLogin->Size = System::Drawing::Size(95, 55);
-			this->buttonLogin->TabIndex = 0;
-			this->buttonLogin->Text = L"Login";
-			this->buttonLogin->UseVisualStyleBackColor = true;
-			// 
-			// tableLayoutPanel1
-			// 
-			this->tableLayoutPanel1->ColumnCount = 3;
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel1->Controls->Add(this->inputPassword, 1, 2);
-			this->tableLayoutPanel1->Controls->Add(this->labelPassword, 0, 2);
-			this->tableLayoutPanel1->Controls->Add(this->inputUsername, 1, 1);
-			this->tableLayoutPanel1->Controls->Add(this->labelTitle, 0, 0);
-			this->tableLayoutPanel1->Controls->Add(this->labelUsername, 0, 1);
-			this->tableLayoutPanel1->Controls->Add(this->buttonLogin, 1, 3);
-			this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
-			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
-			this->tableLayoutPanel1->RowCount = 4;
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(1084, 833);
-			this->tableLayoutPanel1->TabIndex = 6;
-			// 
-			// labelTitle
-			// 
-			this->labelTitle->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
-			this->labelTitle->AutoSize = true;
-			this->tableLayoutPanel1->SetColumnSpan(this->labelTitle, 3);
-			this->labelTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 48, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelTitle->Location = System::Drawing::Point(369, 198);
-			this->labelTitle->Name = L"labelTitle";
-			this->labelTitle->Padding = System::Windows::Forms::Padding(10);
-			this->labelTitle->Size = System::Drawing::Size(345, 167);
-			this->labelTitle->TabIndex = 5;
-			this->labelTitle->Text = L"LMS";
-			this->labelTitle->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label3->Location = System::Drawing::Point(20, 30);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(252, 20);
+			this->label3->TabIndex = 6;
+			this->label3->Text = L"Learning Management System";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(94, 174);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(100, 37);
+			this->button1->TabIndex = 7;
+			this->button1->Text = L"Login";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click_1);
 			// 
 			// LoginForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(192, 192);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
-			this->ClientSize = System::Drawing::Size(1084, 833);
-			this->Controls->Add(this->tableLayoutPanel1);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox1);
 			this->Name = L"LoginForm";
-			this->Text = L"LMS";
-			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
-			this->tableLayoutPanel1->ResumeLayout(false);
-			this->tableLayoutPanel1->PerformLayout();
+			this->Text = L"LoginForm";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	
+	
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+	String^ userRaw = textBox1->Text;
+	String^ passwordRaw = textBox2->Text;
+
+	string Username = msclr::interop::marshal_as<std::string>(userRaw);
+	string Password = msclr::interop::marshal_as<std::string>(passwordRaw);
+
+	int userLogin = userFile(Username, Password);
+
+	cout << userLogin;
+	if (userLogin == 2)
+	{
+		MessageBox::Show("Admin access granted");
+		this->Hide();
+		AdminForm^ adminWindow = gcnew AdminForm;
+		adminWindow->ShowDialog();
 	}
+	else if (userLogin == 1)
+	{
+		MessageBox::Show("Student access granted");
+		this->Hide();
+		Students^ studentWindow = gcnew Students;
+		studentWindow->ShowDialog();
+	}
+	else
+		MessageBox::Show("Incorrect username or password");
+};
 };
 }
