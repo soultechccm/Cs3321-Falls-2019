@@ -1,14 +1,14 @@
-CS1311, Introduction to computing with Python, 1, 3
-CS1410, CS I-Introduction to Computer Science with C++ , 1, 3
-CS2301, Introduction to Computer Organization, 1, 3
-CS2410, CS II-Introduction to Data Structures and Algorithms, 2, 4
-CS3304, Data & Information Structures, 3, 3
-MATH1301, College Algebra, 1, 3
-MATH1505,Precalculus with Trigonometry, 2, 5
-MATH2305, Discrete Mathematical Structures, 3, 3 
-MATH2401, Calculus I, 3, 3
-CHEM1107, General Chemistry Laboratory I, 1, 3
-CHEM1307, General Chemistry I, 1, 3
-ENG1301, Composition I ENG 1301 - Composition I, 1, 3
-ENG1302, Composition II, 2, 3
-COMM1304, Introduction to Communication, 1, 3
+CS1311,Introduction to computing with Python,3
+CS1410,CS I-Introduction to Computer Science with C++,3
+CS2301,Introduction to Computer Organization, 1,3
+CS2410,CS II-Introduction to Data Structures and Algorithms,4
+CS3304,Data & Information Structures,3
+MATH1301,College Algebra,3
+MATH1505,Precalculus with Trigonometry,5
+MATH2305,Discrete Mathematical Structures,3 
+MATH2401,Calculus I,3
+CHEM1107,General Chemistry Laboratory I,3
+CHEM1307,General Chemistry I,3
+ENG1301,Composition I ENG 1301 - Composition I,3
+ENG1302,Composition II,3
+COMM1304,Introduction to Communication,3
