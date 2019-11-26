@@ -1,5 +1,4 @@
 #include "LoginForm.h"
-//#include "Students.h"
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -9,9 +8,7 @@ using namespace System;
 using namespace System::Windows::Forms;
 using namespace std;
 
-//int Users(string usersList[], string passwordsList[]);
-int adminlogin(string userList[], string passwordsList[],  string userName, string password);
-int studentlogin(string userList[], string passwordsList[], string userName, string password);
+int userlogin(string roleList[], string userList[], string passwordsList[], string userName, string password);
 
 int indexCounter = 0;
 int userIndex = -1;
@@ -28,64 +25,46 @@ int main() {
 	
 }
 
-
-int adminlogin(string usersList[], string passwordsList[], string username, string password)           //this is used in order to load the courses
+//////////////////////////User login files//////////////////////
+int LMS::LoginForm::userFile(string username, string password)
 {
-	int c = 0;
-	int access;
-	ifstream ufile("AdminLogin.txt");               //this will open the text file
-	if (ufile)
+	string usersList[100], passwordsList[100], roleList[100];
+
+
+	//Users(usersList, passwordsList);
+	valid = userlogin(roleList, usersList, passwordsList, username, password);
+
+	if (valid == 2)
 	{
-		string uname, pass, line1;
-		while (getline(ufile, line1))
-		{
-			stringstream ss(line1);
-			getline(ss, uname, ',');
-			getline(ss, pass, ',');
-			
-			usersList[c] = uname;
-			passwordsList[c] = pass;
-		
-
-			c++;
-			//counter for the users authorized to operate
-		}
-		ufile.close();
-		
-		//string username, password;
-
-		for (int i = 0; i < c; i++)
-		{
-			if ((usersList[i] == username) && (passwordsList[i] == password))
-			{
-				access = 1;
-			}		
-		}
-		if (access == 1 )
-			return 1;
-		
-		else
-			return 0;
+		return 2;
 	}
-
+	if (valid == 1)
+	{
+		return 1;
+	}
+	else
+		return 0;
 }
-int studentlogin(string usersList[], string passwordsList[], string username, string password)           //this is used in order to load the courses
+
+
+int userlogin(string roleList[], string usersList[], string passwordsList[], string username, string password)           //this is used in order to load the courses
 {
 	int c = 0;
 	int access;
-	ifstream ufile("StudentLogin.txt");               //this will open the text file
+	ifstream ufile("Login.txt");               //this will open the text file
 	if (ufile)
 	{
-		string uname, pass, line1;
+		string uname, pass, role, line1;
 		while (getline(ufile, line1))
 		{
 			stringstream ss(line1);
 			getline(ss, uname, ',');
 			getline(ss, pass, ',');
+			getline(ss, role, '!');
 
 			usersList[c] = uname;
 			passwordsList[c] = pass;
-
+			roleList[c] = role;
 
 			c++;
 			//counter for the users authorized to operate
@@ -99,47 +78,24 @@ int studentlogin(string usersList[], string passwordsList[], string username, st
 			if ((usersList[i] == username) && (passwordsList[i] == password))
 			{
 				access = 1;
+				if (roleList[i].compare("Admin") == 0) {
+					access = 2;
+				}
 			}
 		}
-		if (access == 1)
+
+		switch (access)
+		{
+		case 2:
+			return 2;
+			break;
+		case 1:
 			return 1;
-
-		else
+			break;
+		default:
 			return 0;
+		}
 	}
 
-}
 
-int LMS::LoginForm::adminFile(string username, string password)
-{
-	string usersList[100], passwordsList[100];
-
-
-	//Users(usersList, passwordsList);
-	valid = adminlogin(usersList, passwordsList, username, password);
-
-	if (valid == 1)
-	{
-		return 1;
-	}
-	
-	else
-		return 0;
-}
-
-int LMS::LoginForm::studentFile(string username, string password)
-{
-	string usersList[100], passwordsList[100];
-
-
-	//Users(usersList, passwordsList);
-	valid = studentlogin(usersList, passwordsList, username, password);
-
-	if (valid == 1)
-	{
-		return 1;
-	}
-
-	else
-		return 0;
 }

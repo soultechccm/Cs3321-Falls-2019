@@ -1,6 +1,5 @@
 ﻿  LoginForm.cpp
-C:\Users\Eric\Downloads\Cs3321-Falls-2019-cbd73e7b379b8423b615e1d0625443c7497baf88\Cs3321-Falls-2019-cbd73e7b379b8423b615e1d0625443c7497baf88\Login\LMS\LoginForm.cpp(71): warning C4715: 'adminlogin': not all control paths return a value
-C:\Users\Eric\Downloads\Cs3321-Falls-2019-cbd73e7b379b8423b615e1d0625443c7497baf88\Cs3321-Falls-2019-cbd73e7b379b8423b615e1d0625443c7497baf88\Login\LMS\LoginForm.cpp(111): warning C4715: 'studentlogin': not all control paths return a value
+C:\Users\Eric\Downloads\Cs3321-Falls-2019-master\Cs3321-Falls-2019-master\Login\LMS\LoginForm.cpp(102): warning C4715: 'userlogin': not all control paths return a value
   LoginForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
 LINK : warning LNK4067: ambiguous entry point; selected 'mainCRTStartup'
-  LMS.vcxproj -> C:\Users\Eric\Downloads\Cs3321-Falls-2019-cbd73e7b379b8423b615e1d0625443c7497baf88\Cs3321-Falls-2019-cbd73e7b379b8423b615e1d0625443c7497baf88\Login\x64\Debug\LMS.exe
+  LMS.vcxproj -> C:\Users\Eric\Downloads\Cs3321-Falls-2019-master\Cs3321-Falls-2019-master\Login\x64\Debug\LMS.exe

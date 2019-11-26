@@ -20,8 +20,8 @@ namespace LMS {
 	public ref class LoginForm : public System::Windows::Forms::Form
 	{
 	public:
-		int adminFile(string username, string password);
-		int studentFile(string studentUser, string studentPass);
+		
+		int userFile(string studentUser, string studentPass);
 		LoginForm(void)
 		{
 			InitializeComponent();
@@ -41,13 +41,14 @@ namespace LMS {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  button1;
+
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Button^  button2;
+
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Button^ button1;
 	protected:
 
 	private:
@@ -63,24 +64,13 @@ namespace LMS {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(34, 185);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(88, 35);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Admin Login";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click);
 			// 
 			// textBox1
 			// 
@@ -115,16 +105,6 @@ namespace LMS {
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"Password";
 			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(166, 185);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(88, 35);
-			this->button2->TabIndex = 5;
-			this->button2->Text = L"Student Login";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &LoginForm::button2_Click);
-			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
@@ -136,18 +116,27 @@ namespace LMS {
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"Learning Management System";
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(94, 174);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(100, 37);
+			this->button1->TabIndex = 7;
+			this->button1->Text = L"Login";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click_1);
+			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->button1);
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
 			this->ResumeLayout(false);
@@ -155,42 +144,33 @@ namespace LMS {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
+	
+	
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+	String^ userRaw = textBox1->Text;
+	String^ passwordRaw = textBox2->Text;
+
+	string Username = msclr::interop::marshal_as<std::string>(userRaw);
+	string Password = msclr::interop::marshal_as<std::string>(passwordRaw);
+
+	int userLogin = userFile(Username, Password);
+
+	cout << userLogin;
+	if (userLogin == 2)
 	{
-		String ^ userRaw = textBox1->Text;
-		String ^ passwordRaw = textBox2->Text;
-
-		string username = msclr::interop::marshal_as<std::string>(userRaw);
-		string password = msclr::interop::marshal_as<std::string>(passwordRaw);
-
-		int checkLogin = adminFile(username, password);
-
-		if (checkLogin == 1)
-		{
-			MessageBox::Show("Admin access granted");
-		}
-		else
-			MessageBox::Show("Incorrect username or password");
+		MessageBox::Show("Admin access granted");
+		///////Open Admin Page code here
 	}
-	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) 
+	else if (userLogin == 1)
 	{
-		String ^ userRaw = textBox1->Text;
-		String ^ passwordRaw = textBox2->Text;
-
-		string studentUser = msclr::interop::marshal_as<std::string>(userRaw);
-		string studentPass = msclr::interop::marshal_as<std::string>(passwordRaw);
-
-		int checkLogin = studentFile(studentUser, studentPass);
-
-		if (checkLogin == 1)
-		{
-			MessageBox::Show("Student access granted");
-			this->Hide();
-			Students^ studentWindow = gcnew Students;
-			studentWindow->ShowDialog();
-		}
-		else
-			MessageBox::Show("Incorrect username or password");
+		MessageBox::Show("Student access granted");
+		this->Hide();
+		Students^ studentWindow = gcnew Students;
+		studentWindow->ShowDialog();
 	}
+	else
+		MessageBox::Show("Incorrect username or password");
+};
 };
 }
