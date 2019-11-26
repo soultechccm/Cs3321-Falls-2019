@@ -16,7 +16,7 @@ We are using the democratic team organization.
 
 ## Programming Language
 
-We have decided to use the C++ programming language for this project using the Qt Framework for the GUI.
+We have decided to use the C++ programming language for this project using the Windows Forms Framework for the GUI.
 
 ## Life-Cycle Model
 
