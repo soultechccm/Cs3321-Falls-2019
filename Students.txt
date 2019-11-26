@@ -1,0 +1,12 @@
+studentuser1,Carlton Beachy
+CS1311,MATH1505,ENG1301,COMM1304,
+studentuser2,Marine Dunnam 
+MATH2401,CS2301,CHEM1107,CHEM1307, 
+studentuser3,Kaitlin Birmingham  
+MATH2305,ENG1302,
+studentuser4,Ina Suddeth  
+CS3304,MATH2305,COMM1304,
+studentuser5,Wes Chou  
+CS1311,ENG1301,MATH1301,
+studentuser6,Alva Platt  
+CS2410 MATH2305,
